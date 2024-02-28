@@ -16,7 +16,7 @@ export function LateralBar() {
   }
 
   return (
-    <div className="h-full w-60 hidden lg:flex flex-col justify-between border-2 rounded-lg border-zinc-500 overflow-hidden">
+    <aside className="h-full w-60 hidden lg:flex flex-col justify-between border-2 rounded-lg border-zinc-500 overflow-hidden">
       <Profile
         name={session?.user?.name}
         avatarUrl={session?.user?.image}
@@ -54,6 +54,6 @@ export function LateralBar() {
         <SignOut size={25} />
         Sair
       </button>
-    </div>
+    </aside>
   );
 }
