@@ -7,7 +7,10 @@ export async function getTasks() {
 
     const { tasks } = res.data;
 
-    return tasks;
+    const sortedTasks: TaskType[] = tasks.sort((a: TaskType, b: TaskType) => {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    })
+    return sortedTasks;
   } catch (error) {
     console.log(error);
   }
