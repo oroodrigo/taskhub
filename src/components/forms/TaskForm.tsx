@@ -29,17 +29,17 @@ export function TaskForm() {
     resolver: zodResolver(TaskFormValidationSchema),
     defaultValues: taskToEdit
       ? {
-          title: taskToEdit.title,
-          description: taskToEdit.description,
-          dateToComplete: formattedDate,
-          isImportant: taskToEdit.isImportant,
-        }
+        title: taskToEdit.title,
+        description: taskToEdit.description,
+        dateToComplete: formattedDate,
+        isImportant: taskToEdit.isImportant,
+      }
       : {
-          title: "",
-          description: "",
-          dateToComplete: new Date().toISOString().split("T")[0],
-          isImportant: false,
-        },
+        title: "",
+        description: "",
+        dateToComplete: new Date().toISOString().split("T")[0],
+        isImportant: false,
+      },
   });
 
   function handleSubmitTaskForm(data: TaskFormData) {
@@ -103,7 +103,7 @@ export function TaskForm() {
           <span className="mt-2">{errors.dateToComplete.message}</span>
         )}
       </fieldset>
-      <fieldset className="mb-10 flex items-center justify-between gap-2">
+      <fieldset className="mb-10 flex items-center justify-between gap-2 w-full">
         <label className="text-base font-semibold ">Importante</label>
         <input
           className="toggle-button"
@@ -118,7 +118,7 @@ export function TaskForm() {
           type="submit"
         >
           Editar
-          <PencilSimpleLine size={25} weight="light" />
+          <PencilSimpleLine className="hidden md:block" size={25} weight="light" />
         </button>
       ) : (
         <button
@@ -126,7 +126,7 @@ export function TaskForm() {
           type="submit"
         >
           Criar
-          <PlusCircle size={25} weight="light" />
+          <PlusCircle className="hidden md:block" size={25} weight="light" />
         </button>
       )}
     </form>

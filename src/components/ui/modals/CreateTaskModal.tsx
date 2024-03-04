@@ -14,7 +14,7 @@ export function CreateTaskModal({ content }: CreateTaskModalProps) {
   }
 
   return (
-    <section className="fixed top-0 left-0 z-10 w-full h-screen flex justify-center items-center ">
+    <section className="fixed top-0 left-0 z-10 w-full h-screen flex justify-center items-center px-4">
       <div
         className="absolute top-0 left-0 w-full h-screen bg-black/40 blur-sm"
         onClick={handleCloseModal}

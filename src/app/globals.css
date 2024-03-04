@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+.mobile-menu {
+  @media screen and (max-width:640px) {
+    position: fixed;
+    height: calc(100vh - 2.5rem);
+    transform: translateX(-112%);
+
+    z-index: 10;
+  }
+
+  &&[class*="open"] {
+    transform: translateX(0);
+  }
+
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
 .menu-item {
   display: grid;
   grid-template-columns: 40px 1fr;

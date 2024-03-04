@@ -41,11 +41,10 @@ export function TaskItem({ value }: TaskProps) {
 
   return (
     <div
-      className={` min-h-[250px] xs:h-52 w-full flex flex-col justify-between p-3 border-2 rounded-lg bg-zinc-800/70 ${
-        late && !task.isCompleted
+      className={` min-h-[250px] xs:h-52 w-full flex flex-col justify-between p-3 border-2 rounded-lg bg-zinc-800/70 ${late && !task.isCompleted
           ? "border-orange-400"
-          : "border-zinc-500 transition-colors"
-      }`}
+          : "border-zinc-600 transition-colors"
+        }`}
     >
       <h1 className="text-lg font-semibold mb-2">{task.title}</h1>
       <p className="xs:line-clamp-2">{task.description}</p>

@@ -1,11 +1,15 @@
+"use client"
 import { menu } from "@/@utils/menu";
 import { Profile } from "./Profile";
 import { MenuItem } from "./MenuItem";
-import { SignOut } from "@phosphor-icons/react";
+import { ArrowLeft, List, SignOut } from "@phosphor-icons/react";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
+import { useState } from "react";
 
 export function LateralBar() {
+  const [menuMobileIsCollapsed, setMenuMobileIsCollapsed] = useState(true)
+
   const path = usePathname();
   const router = useRouter();
   const { data: session } = useSession();
@@ -15,8 +19,15 @@ export function LateralBar() {
     router.push("/autentication");
   }
 
+  function handleMenuMobileState() {
+    setMenuMobileIsCollapsed(!menuMobileIsCollapsed)
+  }
+
   return (
-    <aside className="h-full w-60 hidden lg:flex flex-col justify-between border-2 rounded-lg border-zinc-500 overflow-hidden">
+    <aside className={`h-full min-w-fit flex flex-col justify-between border-2 rounded-lg border-zinc-600 bg-zinc-900 mobile-menu ${menuMobileIsCollapsed ? "" : "open"}`}>
+      <button className="absolute -right-11 top-20 p-2 rounded-r-lg bg-zinc-900 border-b-2 border-r-2 border-t-2 border-zinc-600 border-l-2 border-l-zinc-900 text-zinc-400 hover:text-zinc-200 sm:hidden transition-colors duration-300"
+        onClick={handleMenuMobileState}>{menuMobileIsCollapsed ? <List size={25} /> : <ArrowLeft size={25} />}</button>
+
       <Profile
         name={session?.user?.name}
         avatarUrl={session?.user?.image}
@@ -48,7 +59,7 @@ export function LateralBar() {
       </nav>
 
       <button
-        className="flex w-full gap-1 justify-center text-xl px-5 py-3 transition-colors cursor-pointer text-red-500 hover:bg-red-500 hover:text-white"
+        className="flex w-full gap-1 justify-center text-xl px-5 py-3 transition-colors rounded-b-md cursor-pointer text-red-500 hover:bg-red-500 hover:text-white"
         onClick={handleSignOut}
       >
         <SignOut size={25} />
