@@ -14,9 +14,9 @@ export function LateralBar() {
   const router = useRouter();
   const { data: session } = useSession();
 
-  function handleSignOut() {
-    signOut({ redirect: false });
-    router.push("/autentication");
+  async function handleSignOut() {
+    const data = await signOut({ redirect: false, callbackUrl: "/autentication" });
+    router.push(data.url);
   }
 
   function handleMenuMobileState() {
