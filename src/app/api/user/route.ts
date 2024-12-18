@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import prisma from "@/libs/prismadb";
 import { NextResponse, NextRequest } from "next/server";
+import { EditProfileSchema } from "@/app/profile/page";
 
 export async function POST(req: Request) {
   try {
@@ -60,5 +61,39 @@ export async function GET(req: NextRequest) {
     );
   } catch (error) {
     return NextResponse.json({ message: "Error getting user" , error});
+  }
+}
+
+export async function PUT(req: NextRequest) {
+  try {
+    const body: EditProfileSchema = await req.json();
+    const { id, firstName, lastName, imageUrl } = body
+
+    const fullName = `${firstName} ${lastName}`
+
+
+    const data = {
+        name: fullName,
+        image: imageUrl
+      }
+
+    const user = await prisma.user.update({
+      where: {
+        id: id,
+      },
+      data
+    });
+
+
+    return NextResponse.json({ user: {
+      ...user,
+      createdAt: user.createdAt.toISOString(),
+      updatedAt: user.updatedAt.toISOString(),
+      emailVerified: user.emailVerified?.toISOString() || null,
+      }
+    }
+    );
+  } catch (error) {
+    return NextResponse.json({ message: "Error updating user" , error});
   }
 }

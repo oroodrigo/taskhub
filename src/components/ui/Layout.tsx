@@ -18,7 +18,7 @@ export function Layout(props: LayoutProps) {
     <section className={"h-screen flex bg-zinc-900 text-white p-5 gap-5 lg:p-10 lg:gap-10 transition-all duration-300"}>
       <LateralBar />
       <main className="h-full w-full py-5 px-7 flex flex-col gap-5 border-2 rounded-lg border-zinc-600 overflow-y-auto">
-        <h1 className="text-xl font-bold">{props.title}</h1>
+        <h1 className="text-2xl font-bold">{props.title}</h1>
         {props.children}
       </main>
     </section>

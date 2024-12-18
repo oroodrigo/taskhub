@@ -34,7 +34,7 @@ export function Profile({ name, avatarUrl, onClick }: ProfileProps) {
         className="w-14 h-14 lg:w-16 lg:h-16 rounded-full border-2 border-gray-500 group-hover:scale-105 transition-all duration-300"
       />
       <strong className="text-md lg:text-lg w-[4.875rem] transition-all duration-300">{`${formattedUsername ? formattedUsername[0] : "Olá"
-        } ${formattedUsername ? formattedUsername[1] : "Visitante"}`}</strong>
+        } ${formattedUsername ? formattedUsername[formattedUsername.length - 1] : "Visitante"}`}</strong>
     </div>
   );
 }

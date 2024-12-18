@@ -1,5 +1,4 @@
-"use client";
-
+'use client'
 import { CreateTask } from "@/components/ui/task/CreateTask";
 import { Layout } from "@/components/ui/Layout";
 import { TaskItem } from "@/components/ui/task/TaskItem";

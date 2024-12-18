@@ -60,7 +60,12 @@ export const authOptions: AuthOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user, session, account }) {
+    async jwt({ token, user, session, account, trigger }) {
+      if(trigger === 'update' && session.user) {
+        token.name = session.user.name
+        token.picture = session.user.image
+      }
+
       // Pass in user id and role to token
       if (user) {
         return {
