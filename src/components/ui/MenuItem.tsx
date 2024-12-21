@@ -1,25 +1,25 @@
 import Link from "next/link";
-import Icon from "@phosphor-icons/react";
+import { ReactNode } from "react";
 
 type MenuItemProps = {
   text: string;
-  icon: Icon.IconProps;
+  icon: ReactNode;
   path: string;
   active?: boolean;
   onClick?: () => void;
 };
 
-export function MenuItem({ icon, path, text, active, onClick }: MenuItemProps) {
+export function MenuItem({ icon: Icon, path, text, active, onClick }: MenuItemProps) {
   return active ? (
     <li onClick={onClick} className="menu-item bg-menu-active-zinc active">
-      <>{icon}</>
+      {Icon}
       <Link href={path}>
         <span>{text}</span>
       </Link>
     </li>
   ) : (
     <li onClick={onClick} className="menu-item text-zinc-500">
-      <>{icon}</>
+      {Icon}
       <Link href={path}>
         <span>{text}</span>
       </Link>
