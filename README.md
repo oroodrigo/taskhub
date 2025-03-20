@@ -6,7 +6,7 @@
 
 ## Demo
 
-Link do site: https://taskhub.live
+Link do site: https://oroodrigo-taskhub.netlify.app
 
 ## 🚀 Tecnologias
 
